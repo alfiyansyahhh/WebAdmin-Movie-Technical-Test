@@ -4,7 +4,7 @@ const initialState = {
     all: [],
     loadAll: false, 
     errorAll: false,
-    errorAllMessage: 'err',
+    errorAllMessage: '',
 }
 
 const GenreReducer = (state=initialState, action) => {

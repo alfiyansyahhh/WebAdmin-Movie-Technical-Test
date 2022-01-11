@@ -4,11 +4,11 @@ const initialState = {
     all: [],
     loadAll: false, 
     errorAll: false,
-    errorAllMessage: 'err',
+    errorAllMessage: '',
     detail: [],
     loadDetail: false,
     errorDetail: false,
-    errorDetailMessage: 'err',
+    errorDetailMessage: '',
 }
 
 const MovieReducer = (state=initialState, action) => {
