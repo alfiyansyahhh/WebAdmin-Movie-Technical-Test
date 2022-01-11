@@ -1,0 +1,25 @@
+.poster{
+    width: 250px;
+    height: 300px;
+    cursor: pointer;
+}
+.list-card{
+    margin-top: 20px !important;
+}
+.cardd{
+    display: flex;
+    width: 20%;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.rating{
+    margin-top: 30px;
+}
+.pagination1{
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+    /* background-color: yellowgreen; */
+    border: 1px solid #0B132A;
+    padding: 15px;
+}

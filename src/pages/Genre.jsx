@@ -1,7 +1,9 @@
 import Navbar from '../components/Navbar'
 import {useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import genre from '../redux/actions/ListGenre'
+import {ACTION_GET_GENRES} from '../redux/actions/ListGenre'
+import {Row, Col} from 'reactstrap';
+import './css/Genre.css'
 
 const Genre = () => {
 
@@ -9,27 +11,24 @@ const Genre = () => {
     const ListGenre = useSelector((state) => state.Genre)
 
     useEffect(() => {
-        dispatch(genre.ACTION_GET_GENRES())
+        dispatch(ACTION_GET_GENRES())
     }, []) 
 
     return(
         <div>
             <Navbar/>
-            <h1>Genre</h1>
             {ListGenre.loadAll===true?(
                 <div>
                     loading
                 </div>
             ):(
-                <div>
+                <Row className='mt-5 p-5'>
                     {ListGenre.all.map((e) => {
-                        return(
-                            <div>
-                                {e.id}-{e.name}
-                            </div>
+                        return(                        
+                            <Col lg="3" md="3" xs="6"  ><div className='card2'>{e.name}</div></Col>                        
                         )
                     })}
-                </div>
+               </Row>
             )}
 
             

@@ -1,8 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,800;1,300;1,400;1,500&display=swap");
+
 .navbar{
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    background-color: #0B132A;
+    padding: 30px;
 }
-.test{
-    margin-left: 30px;
-    margin-top: 30px;
+.judul{
+    color: white;
+}
+.nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nav-li{
+   padding: 15px;
+   color: white;
+   text-decoration: none;
+   font-family: Rubik;
+   font-style: normal;
+   font-weight: 500;
+   font-size: 17px;
 }
