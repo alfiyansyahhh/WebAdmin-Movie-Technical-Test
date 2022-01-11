@@ -1,30 +1,28 @@
 import axios from 'axios'
 import Get from '../helpers/env'
+import {API_URL,API_KEY } from '../../utils'
 
-const Genre = {
-            
-    ACTION_GET_GENRES : () => {  
-        return (dispatch) => {
+
+export const ACTION_GET_GENRES = () => {  
+    return (dispatch) => {
+        dispatch({
+            type: `${Get.Genres_Pending}`
+        })
+
+        axios.get(`${API_URL}/genre/movie/list?api_key=${API_KEY}`)
+        .then((response) => {
             dispatch({
-                type: `${Get.Genres_Pending}`
+                type: `${Get.Genres_Fulfilled}`,
+                payload: response.data.genres
             })
-
-            axios.get(`${Get.API_URL}/genre/movie/list?api_key=${Get.API_KEY}`)
-            .then((response) => {
-                dispatch({
-                    type: `${Get.Genres_Fulfilled}`,
-                    payload: response.data.genres
-                })
-            }).catch((err) =>{
-                dispatch({
-                    type: `${Get.Genres_Rejected}`,
-                    payload: "Terjadi Kesalahan"
-                })
+        }).catch((err) =>{
+            dispatch({
+                type: `${Get.Genres_Rejected}`,
+                payload: "Terjadi Kesalahan"
             })
-        }
-    },
-
+        })
+    }
 }
 
-export default Genre
+
 

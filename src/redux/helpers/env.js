@@ -1,7 +1,4 @@
 const Get = {
-    API_URL : process.env.REACT_APP_API_URL,
-    API_KEY : process.env.REACT_APP_API_KEY,
-
     Movies_Pending : 'GET_ALL_MOVIES_PENDING',
     Movies_Fulfilled : 'GET_ALL_MOVIES_FULFILLED',
     Movies_Rejected : 'GET_ALL_MOVIES_REJECTED',
@@ -13,6 +10,9 @@ const Get = {
     Genres_Pending : 'GET_ALL_GENRES_PENDING',
     Genres_Fulfilled : 'GET_ALL_GENRES_FULFILLED',
     Genres_Rejected : 'GET_ALL_GENRES_REJECTED',
+    Genre_Detail_Pending : 'GET_DETAIL_GENRE_PENDING',
+    Genre_Detail_Fulfilled : 'GET_DETAIL_GENRE_FULFILLED',
+    Genre_Detail_Rejected : 'GET_DETAIL_GENRE_REJECTED',
 }
 
 export default Get

@@ -5,6 +5,10 @@ const initialState = {
     loadAll: false, 
     errorAll: false,
     errorAllMessage: '',
+    Detail: [],
+    loadDetail: false, 
+    errorDetail: false,
+    errorDetailMessage: '',
 }
 
 const GenreReducer = (state=initialState, action) => {
@@ -15,7 +19,7 @@ const GenreReducer = (state=initialState, action) => {
             return {...state, loadAll: false, all: action.payload}
         case `${Get.Genres_Rejected}`:
             return {...state, loadAll: false, errorAll: true, errorAllMessage: action.payload}    
-        
+                
         default:
             return state
     }
