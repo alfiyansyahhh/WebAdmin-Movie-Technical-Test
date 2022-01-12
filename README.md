@@ -93,8 +93,6 @@ Simple website
 
 alfiyansyah - alfiyansyahhh@gmail.com
 
-Project Link: [https://github.com/alfiyansyahhh/zwallet](https://github.com/alfiyansyahhh/Cofee-Shop/blob/main/package.json)
-
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
