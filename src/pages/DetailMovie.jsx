@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable jsx-a11y/alt-text */
 import Navbar from '../components/Navbar'
 import { useParams } from 'react-router-dom'
 import { useEffect } from 'react'

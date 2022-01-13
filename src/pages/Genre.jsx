@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Navbar from '../components/Navbar'
 import {useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
@@ -29,9 +30,7 @@ const Genre = () => {
                         )
                     })}
                </Row>
-            )}
-
-            
+            )}            
         </div>
     )
 }
