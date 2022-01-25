@@ -1,13 +1,16 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable react-hooks/exhaustive-deps */
 import Navbar from '../components/Navbar'
-import { useEffect, useState, useMemo } from 'react'
+// import { useEffect, useState, useMemo } from 'react'
+import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { ACTION_GET_MOVIES } from '../redux/actions/ListMovie'
 import './css/ListMovie.css'
 import {Row, Col} from 'reactstrap';
-import Pagino from "pagino";
+// import Pagino from "pagino";
 import { useNavigate } from 'react-router-dom';
+import ReactPaginate from 'react-paginate';
+
 
 const ListMovie = () => {
 
@@ -20,50 +23,60 @@ const ListMovie = () => {
     }, [])
 
 
-    const [pages, setPages] = useState([]);
+    // const [pages, setPages] = useState([]);
 
-    const pagino = useMemo(() => {
-        const _ = new Pagino({
-        onChange: (page, count) => setPages(_.getPages()) 
-
-        });
-
-        _.setCount(20);
-
-        return _;
-    }, []);
-
-    const hanglePaginoNavigation = (type) => {
-        if (typeof type === "string") {
-        pagino[type]?.();
-        return;
-        }
-
-        pagino.setPage(type);
+    // Invoke when user click to request another page.
+    const handlePageClick = (event) => {
+        const page = event.selected+1
+        dispatch(ACTION_GET_MOVIES(page))
+        console.log(page)
     };
 
-    const renderElement = (page) => {
-        if (page === "start-ellipsis" || page === "end-ellipsis") {
-        return <button className='pagination1' key={page}>...</button>;
-        }
 
-        return (
-        <button className='pagination1'
-            style={{
-            backgroundColor: page === pagino.page ? "#0971f1" : ""
-            ,color: page === pagino.page? "white":""
-            }}
-            key={page}
-            onClick={() => hanglePaginoNavigation(page)}
-        >
-            {page}
-        </button>
-        );
-    };
 
-    useEffect(() => {
-        dispatch(ACTION_GET_MOVIES(pagino.page))
-    }, [pagino.page]) 
+
+    // const pagino = useMemo(() => {
+    //     const _ = new Pagino({
+    //     onChange: (page, count) => setPages(_.getPages()) 
+
+    //     });
+
+    //     _.setCount(20);
+
+    //     return _;
+    // }, []);
+
+    // const hanglePaginoNavigation = (type) => {
+    //     if (typeof type === "string") {
+    //     pagino[type]?.();
+    //     return;
+    //     }
+
+    //     pagino.setPage(type);
+    // };
+
+    // const renderElement = (page) => {
+    //     if (page === "start-ellipsis" || page === "end-ellipsis") {
+    //     return <button className='pagination1' key={page}>...</button>;
+    //     }
+
+    //     return (
+    //     <button className='pagination1'
+    //         style={{
+    //         backgroundColor: page === pagino.page ? "#0971f1" : ""
+    //         ,color: page === pagino.page? "white":""
+    //         }}
+    //         key={page}
+    //         onClick={() => hanglePaginoNavigation(page)}
+    //     >
+    //         {page}
+    //     </button>
+    //     );
+    // };
+
+    // useEffect(() => {
+    //     dispatch(ACTION_GET_MOVIES(pagino.page))
+    // }, [pagino.page]) 
 
 
     const navigate = useNavigate()
@@ -76,7 +89,23 @@ const ListMovie = () => {
             <Navbar/>
 
             <div className='mt-3'>
-                <ul>{pages.map(renderElement)}</ul>
+                {/* <ul>{pages.map(renderElement)}</ul> */}
+                <ul>
+                    <ReactPaginate 
+                    previousLabel='Prev'
+                    previousClassName='prev'
+                    nextLabel= 'Next'
+                    breakLabel= '...'
+                    breakClassName='break-me'
+                    pageCount={ListMovies.all.length}
+                    marginPagesDisplayed={5}
+                    pageRangeDisplayed={50}
+                    onPageChange={handlePageClick}
+                    containerClassName='pagination'
+                    subContainerClassName='page-pagination'
+                    activeClassName='active'
+                    />
+                </ul>
             </div>
 
             {ListMovies.loadAll===true?(
